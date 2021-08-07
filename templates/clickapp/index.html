@@ -1,6 +1,33 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
+
+
+
+<table>
+  <td>Lager</td>
+  <td>Kunde</td>
+  <td>Netto</td>
+  <td>Steuersatz</td>
+  <td>Brutto</td>
+  <td>Markierung</td>
+  <tr>
+    <form id="calc-form" action="" method="post">
+
+      {% csrf_token %}
+      {% for field in form %}
+      <td>{{ field|as_crispy_field }}</td>
+      {% endfor %}
+
+    </form>
+  </tr>
+  
+</table>
+
+
+
+<input type="submit" form="calc-form" value="Calculate">
+
 
 {% endblock content %}
