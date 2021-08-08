@@ -13,7 +13,7 @@
   <td>Brutto</td>
   <td>Markierung</td>
   <tr>
-    <form id="calc-form" action="" method="post">
+    <form id="calc-form" action="{% url 'result' %}" method="post">
 
       {% csrf_token %}
       {% for field in form %}
@@ -22,7 +22,7 @@
 
     </form>
   </tr>
-  
+
 </table>
 
 

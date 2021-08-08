@@ -1,7 +1,5 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
 
-
-{% block content %}
 
 <table>
   <td>Lager</td>
@@ -12,11 +10,14 @@
   <td>Markierung</td>
   <tr>
     <form id="calc-form" action="" method="post">
-
       {% csrf_token %}
-      {% for field in form %}
-      <td>{{ field|as_crispy_field }}</td>
-      {% endfor %}
+
+      <td>{{ form.warehouse|as_crispy_field }}</td>
+      <td>{{ form.customer|as_crispy_field }}</td>
+      <td>{{ form.net|as_crispy_field }}</td>
+      <td>{{ form.get_tax_rate }}</td>
+      <td>{{ form.get_gross }}</td>
+      <td>{{ form.get_classification }}</td>
 
     </form>
   </tr>
