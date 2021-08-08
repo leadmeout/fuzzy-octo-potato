@@ -12,15 +12,22 @@
   <td>Steuersatz</td>
   <td>Brutto</td>
   <td>Markierung</td>
-  <tr>
+
     <form id="calc-form" action="{% url 'result' %}" method="post">
 
       {% csrf_token %}
-      {% for field in form %}
-      <td>{{ field|as_crispy_field }}</td>
+      {{ formset.management_form }}
+      {% for form in formset %}
+      <tr>
+
+        {% for field in form %}
+          <td>
+            {{ field|as_crispy_field }}
+          </td>
+        {% endfor %}
       {% endfor %}
 
-    </form>
+  </form>
   </tr>
 
 </table>

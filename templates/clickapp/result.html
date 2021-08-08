@@ -8,17 +8,22 @@
   <td>Steuersatz</td>
   <td>Brutto</td>
   <td>Markierung</td>
-  <tr>
-    <form id="calc-form" action="" method="post">
+
+    <form id="calc-form" action="{% url 'result' %}" method="post">
       {% csrf_token %}
 
-      <td>{{ form.warehouse|as_crispy_field }}</td>
-      <td>{{ form.customer|as_crispy_field }}</td>
-      <td>{{ form.net|as_crispy_field }}</td>
-      <td>{{ form.get_tax_rate }}</td>
-      <td>{{ form.get_gross }}</td>
-      <td>{{ form.get_classification }}</td>
+      {{ formset.management_form }}
+      {% for form in formset %}
+      <tr>
 
+          <td>{{ form.warehouse|as_crispy_field }}</td>
+          <td>{{ form.customer|as_crispy_field }}</td>
+          <td>{{ form.net|as_crispy_field }}</td>
+          <td>{{ form.get_tax_rate }}</td>
+          <td>{{ form.get_gross }}</td>
+          <td>{{ form.get_classification }}</td>
+
+      {% endfor %}
     </form>
   </tr>
 
