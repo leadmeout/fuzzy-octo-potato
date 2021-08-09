@@ -1,0 +1,20 @@
+default_language_version:
+  # default language version for each language
+  python: python3.9
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      # See https://pre-commit.com/hooks.html for more hooks
+      - id: autopep8
+      - id: check-ast
+      - id: check-case-conflict
+      - id: check-executables-have-shebangs
+      - id: check-merge-conflict
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: flake-8
+      - id: name-tests-test
+        args: [ "--django" ]
+      - id: pylint
+      - id: trailing-whitespace

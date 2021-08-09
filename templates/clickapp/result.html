@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
 
-
-<table>
+<div class="row">
+  <table style="margin: auto">
   <td>Lager</td>
   <td>Kunde</td>
   <td>Netto</td>
@@ -29,8 +29,11 @@
 
 </table>
 
+</div>
 
-
-<input type="submit" form="calc-form" value="Calculate">
-
+<div class="row" style="padding-top:20px">
+  <div class="p-0">
+    <input type="submit" form="calc-form" value="Calculate">
+  </div>
+</div>
 {% endblock content %}

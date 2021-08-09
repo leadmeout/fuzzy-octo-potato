@@ -3,38 +3,41 @@
 
 {% block content %}
 
-
-
-<table>
-  <td>Lager</td>
-  <td>Kunde</td>
-  <td>Netto</td>
-  <td>Steuersatz</td>
-  <td>Brutto</td>
-  <td>Markierung</td>
+<div class="row">
+  <table style="margin: auto">
+    <td>Lager</td>
+    <td>Kunde</td>
+    <td>Netto</td>
+    <td>Steuersatz</td>
+    <td>Brutto</td>
+    <td>Markierung</td>
 
     <form id="calc-form" action="{% url 'result' %}" method="post">
 
       {% csrf_token %}
       {{ formset.management_form }}
       {% for form in formset %}
+
       <tr>
-
         {% for field in form %}
-          <td>
-            {{ field|as_crispy_field }}
-          </td>
+        <td>
+          {{ field|as_crispy_field }}
+        </td>
         {% endfor %}
-      {% endfor %}
+        {% endfor %}
 
-  </form>
-  </tr>
+    </form>
+    </tr>
+  </table>
 
-</table>
+</div>
 
+<div class="row" style="padding-top:20px">
+  <div class="p-0">
+    <input type="submit" form="calc-form" value="Calculate">
+  </div>
+</div>
 
-
-<input type="submit" form="calc-form" value="Calculate">
 
 
 {% endblock content %}
