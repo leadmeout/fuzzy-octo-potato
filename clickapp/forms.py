@@ -39,7 +39,9 @@ class TariffCalcForm(ModelForm):
         try:
             warehouse = self.cleaned_data["warehouse"]
             customer = self.cleaned_data["customer"]
-        except KeyError or AttributeError:
+        except KeyError:
+            return "------"
+        except AttributeError:
             return "------"
 
         if customer:
@@ -51,6 +53,8 @@ class TariffCalcForm(ModelForm):
 
             return self.TAX_RATE_DICT[tax]
 
+        return "------"
+
     @property
     def get_gross(self):
         """
@@ -60,7 +64,9 @@ class TariffCalcForm(ModelForm):
         try:
             receiver = self.cleaned_data["customer"]
             net_total = float(self.cleaned_data["net"])
-        except KeyError or AttributeError:
+        except KeyError:
+            return "------"
+        except AttributeError:
             return "------"
 
         if receiver and net_total:
@@ -71,6 +77,8 @@ class TariffCalcForm(ModelForm):
             gross_total = round(net_total * tax + net_total, 2)
             return f"{gross_total:.2f}"
 
+        return "------"
+
     @property
     def get_classification(self):
         """
@@ -79,7 +87,9 @@ class TariffCalcForm(ModelForm):
         try:
             receiver = self.cleaned_data["customer"]
             classification = self.CLASSIFICATION_DICT[receiver]
-        except KeyError or AttributeError:
+        except KeyError:
             return "------"
-        else:
-            return classification
+        except AttributeError:
+            return "------"
+
+        return classification
