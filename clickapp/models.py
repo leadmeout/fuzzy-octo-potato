@@ -18,8 +18,8 @@ class TariffCalc(models.Model):
     warehouse = models.CharField(max_length=2, choices=WAREHOUSE_LIST)
     customer = models.CharField(max_length=2, choices=CUSTOMER_LIST)
     net = models.DecimalField(
-        max_digits=9, decimal_places=2, validators=[MinValueValidator(1)]
+        max_digits=11, decimal_places=2, validators=[MinValueValidator(1)]
     )
     tax_rate = models.DecimalField(max_digits=4, decimal_places=3, blank=True)
-    gross = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
+    gross = models.DecimalField(max_digits=12, decimal_places=2, blank=True)
     classification = models.CharField(max_length=2, blank=True)

@@ -12,9 +12,11 @@ class TariffCalcForm(ModelForm):
     class Meta:
         model = TariffCalc
         fields = "__all__"
+        localized_fields = "__all__"
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         self.helper = FormHelper()
         self.helper.form_method = "post"
         self.helper.form_show_labels = False
@@ -29,6 +31,10 @@ class TariffCalcForm(ModelForm):
     }
 
     TAX_RATE_DICT = {0.19: "19%", 0.077: "7.7%", 0: "Steuerfrei"}
+
+    def convert_number(self, num):
+
+        pass
 
     @property
     def get_tax_rate(self):
@@ -75,7 +81,7 @@ class TariffCalcForm(ModelForm):
             except KeyError:
                 tax = float(self.INTERNAL_TAX_DICT[self.cleaned_data["warehouse"]])
             gross_total = round(net_total * tax + net_total, 2)
-            return f"{gross_total:.2f}"
+            return round(gross_total, 2)
 
         return "------"
 

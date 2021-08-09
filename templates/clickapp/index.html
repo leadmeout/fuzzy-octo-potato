@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load humanize %}
+{% load l10n %}
 
 {% block content %}
 
@@ -21,9 +23,9 @@
 
           <td>{{ form.warehouse|as_crispy_field }}</td>
           <td>{{ form.customer|as_crispy_field }}</td>
-          <td>{{ form.net|as_crispy_field }}</td>
+          <td>{{ form.net|as_crispy_field|localize }}</td>
           <td>{{ form.get_tax_rate }}</td>
-          <td>{{ form.get_gross }}</td>
+          <td>{{ form.get_gross|intcomma }}</td>
           <td>{{ form.get_classification }}</td>
 
       {% endfor %}
