@@ -7,20 +7,43 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='TariffCalc',
+            name="TariffCalc",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('warehouse', models.CharField(choices=[('de', 'DE'), ('ch', 'CH')], max_length=2)),
-                ('customer', models.CharField(choices=[('de', 'DE'), ('ch', 'CH'), ('fr', 'FR'), ('us', 'US')], max_length=2)),
-                ('net', models.DecimalField(decimal_places=2, max_digits=9)),
-                ('tax_rate', models.DecimalField(decimal_places=3, max_digits=4)),
-                ('gross', models.DecimalField(decimal_places=2, max_digits=10)),
-                ('classification', models.CharField(max_length=2)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "warehouse",
+                    models.CharField(
+                        choices=[("de", "DE"), ("ch", "CH")], max_length=2
+                    ),
+                ),
+                (
+                    "customer",
+                    models.CharField(
+                        choices=[
+                            ("de", "DE"),
+                            ("ch", "CH"),
+                            ("fr", "FR"),
+                            ("us", "US"),
+                        ],
+                        max_length=2,
+                    ),
+                ),
+                ("net", models.DecimalField(decimal_places=2, max_digits=9)),
+                ("tax_rate", models.DecimalField(decimal_places=3, max_digits=4)),
+                ("gross", models.DecimalField(decimal_places=2, max_digits=10)),
+                ("classification", models.CharField(max_length=2)),
             ],
         ),
     ]

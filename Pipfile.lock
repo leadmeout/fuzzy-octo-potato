@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "76113ada46e646187c0f87c1cc2e504317bcd14a39c234d40dad1e6ac7eb4f56"
+            "sha256": "6eaac3af20adc3fcb673aba1e09dbc0a785c6c055faf1ea2fb0b8e12d19594d8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "markers": "python_version >= '3.6'",
             "version": "==3.4.1"
+        },
+        "autopep8": {
+            "hashes": [
+                "sha256:276ced7e9e3cb22e5d7c14748384a5cf5d9002257c0ed50c0e075b68011bb6d0",
+                "sha256:aa213493c30dcdac99537249ee65b24af0b2c29f2e83cd8b3f68760441ed0db9"
+            ],
+            "index": "pypi",
+            "version": "==1.5.7"
         },
         "backports.entry-points-selectable": {
             "hashes": [
@@ -70,6 +78,14 @@
             ],
             "version": "==3.0.12"
         },
+        "git-hooks-pylint-django": {
+            "hashes": [
+                "sha256:6ce10fd2f4c6295a73ea63dd7aba3c5014e4994019fd838e55cb8435b5993e65",
+                "sha256:d297542b7107309429ba7da20fe5c1e593c307109ed946b438897d42f9d6aa9e"
+            ],
+            "index": "pypi",
+            "version": "==0.1"
+        },
         "gunicorn": {
             "hashes": [
                 "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e",
@@ -108,6 +124,14 @@
             ],
             "index": "pypi",
             "version": "==2.14.0"
+        },
+        "pycodestyle": {
+            "hashes": [
+                "sha256:514f76d918fcc0b55c6680472f0a37970994e07bbb80725808c17089be302068",
+                "sha256:c389c1d06bf7904078ca03399a4816f974a1d590090fecea0c63ec26ebaf1cef"
+            ],
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
+            "version": "==2.7.0"
         },
         "pytz": {
             "hashes": [

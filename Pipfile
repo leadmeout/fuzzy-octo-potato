@@ -8,6 +8,8 @@ django = "*"
 django-crispy-forms = "*"
 gunicorn = "*"
 pre-commit = "*"
+autopep8 = "*"
+git-hooks-pylint-django = "*"
 
 [dev-packages]
 
