@@ -16,7 +16,7 @@ def index(request):
 
         for form in formset:
             if form.is_valid():
-                return render(request, "clickapp/result.html", context)
+                return render(request, "clickapp/index.html", context)
 
     TCFormset = modelformset_factory(TariffCalc, form=TariffCalcForm, extra=9)
     formset = TCFormset()
