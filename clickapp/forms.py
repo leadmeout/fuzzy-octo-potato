@@ -20,7 +20,7 @@ class TariffCalcForm(ModelForm):
         self.helper = FormHelper()
         self.helper.form_method = "post"
         self.helper.form_show_labels = False
-        self.helper.add_input(Submit("submit", "Calculate"))
+        self.helper.add_input(Submit("submit", "Berechnen"))
 
     CLASSIFICATION_DICT = {"ch": "EU", "de": "EU", "fr": "EU", "us": "US"}
 
@@ -30,7 +30,7 @@ class TariffCalcForm(ModelForm):
         "us": 0,
     }
 
-    TAX_RATE_DICT = {0.19: "19%", 0.077: "7.7%", 0: "Steuerfrei"}
+    TAX_RATE_DICT = {0.19: "19%", 0.077: "7,7%", 0: "Steuerfrei"}
 
     def convert_number(self, num):
 
@@ -81,7 +81,8 @@ class TariffCalcForm(ModelForm):
             except KeyError:
                 tax = float(self.INTERNAL_TAX_DICT[self.cleaned_data["warehouse"]])
             gross_total = round(net_total * tax + net_total, 2)
-            return round(gross_total, 2)
+
+            return f"{gross_total:.2f}"
 
         return "------"
 
