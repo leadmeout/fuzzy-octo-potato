@@ -20,10 +20,6 @@ class TariffCalcForm(ModelForm):
         self.helper.form_show_labels = False
         self.helper.add_input(Submit("submit", "Calculate"))
 
-        self.fields["tax_rate"].widget.attrs["readonly"] = True
-        self.fields["gross"].widget.attrs["readonly"] = True
-        self.fields["classification"].widget.attrs["readonly"] = True
-
     CLASSIFICATION_DICT = {"ch": "EU", "de": "EU", "fr": "EU", "us": "US"}
 
     INTERNAL_TAX_DICT = {

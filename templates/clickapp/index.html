@@ -12,7 +12,7 @@
     <td>Brutto (€)</td>
     <td>Markierung</td>
 
-    <form id="calc-form" action="{% url 'result' %}" method="post">
+    <form id="calc-form" action="{% url 'index' %}" method="post">
       {% csrf_token %}
 
       {{ formset.management_form }}

@@ -9,23 +9,16 @@ def index(request):
     Display model form as formset
     """
 
+    if request.method == "POST":
+        TCFormset = modelformset_factory(TariffCalc, form=TariffCalcForm)
+        formset = TCFormset(request.POST)
+        context = {"formset": formset}
+
+        for form in formset:
+            if form.is_valid():
+                return render(request, "clickapp/result.html", context)
+
     TCFormset = modelformset_factory(TariffCalc, form=TariffCalcForm, extra=9)
     formset = TCFormset()
     context = {"formset": formset}
     return render(request, "clickapp/index.html", context)
-
-
-def result(request):
-    """
-    Display model form as formset with calculated results.
-    """
-
-    TCFormset = modelformset_factory(TariffCalc, form=TariffCalcForm)
-    formset = TCFormset(request.POST)
-    context = {"formset": formset}
-
-    for form in formset:
-        if form.is_valid():
-            return render(request, "clickapp/result.html", context)
-
-        return render(request, "clickapp/index.html", context)
