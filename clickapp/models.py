@@ -1,12 +1,48 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-# Create your models here.
-
 
 class TariffCalc(models.Model):
-    """
-    Define Tariff Calculator object for model form
+    """A class used to represent the Tariff Calculator.
+
+    Attributes:
+
+        WAREHOUSE_LIST: list
+            contains a list of tuples containing available warehouses
+
+        CUSTOMER_LIST: list
+            contains a list of tuples with available customers to ship to
+
+        TAX_RATE_DICT: dict
+            contains key:value pairs to display the tax rate to the user
+
+        warehouse: str
+            a dropdown field which lists elements of WAREHOUSE_LIST as choices
+
+        customer: str
+            a dropdown field which lists elements of CUSTOMER_LIST as choices
+
+        net: Decimal
+            a fixed-precision decimal number with a max_digit value of 11. This
+            attribute will be validated against the MinValueValidator which
+            ensures the given value is higher than 1.
+
+            The number will always include two decimals places in POST.
+
+        tax_rate: Decimal
+            a fixed-precision decimal number with a max_digit value of 4. It
+            shows 3 decimal places and is initially blank. This attribute will
+            display the tax rate. Initially blank and displayed in POST.
+
+        gross: Decimal
+            a fixed-precision decimal number with a max_digit value of 12. It
+            shows 3 decimal places and is initially blank. This attribute will
+            display the gross total. Initially blank and displayed in POST.
+
+        classficiation: str
+            a field to display the classification for the invoice based on the
+            customer. Initially blank and displayed in POST.
+
     """
 
     WAREHOUSE_LIST = [("de", "DE"), ("ch", "CH")]

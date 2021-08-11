@@ -3,6 +3,7 @@ from django.utils.encoding import force_text
 
 register = template.Library()
 
+
 @register.filter
 def intdot(value):
     """
@@ -16,8 +17,8 @@ def intdot(value):
     except ValueError:
         return "------"
 
-    val_new = '{:,d}'.format(val_new)
-    val_new = val_new.replace(',', '.')
-    val_decimal = val_decimal.replace('.', ',')
+    val_new = "{:,d}".format(val_new)
+    val_new = val_new.replace(",", ".")
+    val_decimal = val_decimal.replace(".", ",")
     val_new += val_decimal
     return val_new
