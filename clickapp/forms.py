@@ -31,10 +31,6 @@ class TariffCalcForm(ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        A short description.
-
-        A bit longer description.
-
         Parameters:
             helper: FormHelper object
                 Creates an instance of FormHelper for use of crispy forms module
