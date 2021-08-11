@@ -1,3 +1,7 @@
+"""
+Provide template tags for clickapp.
+"""
+
 from django import template
 from django.utils.encoding import force_text
 

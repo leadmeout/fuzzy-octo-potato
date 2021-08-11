@@ -5,8 +5,19 @@ from crispy_forms.layout import Submit
 
 
 class TariffCalcForm(ModelForm):
-    """
-    Define Tariff Calculator model form object
+    """A class used to represent the Tariff Calculator form.
+
+    A bit longer description.
+
+    Args:
+        variable (type): description
+
+    Returns:
+        type: description
+
+    Raises:
+        Exception: description
+
     """
 
     class Meta:
@@ -31,10 +42,6 @@ class TariffCalcForm(ModelForm):
     }
 
     TAX_RATE_DICT = {0.19: "19%", 0.077: "7,7%", 0: "Steuerfrei"}
-
-    def convert_number(self, num):
-
-        pass
 
     @property
     def get_tax_rate(self):
