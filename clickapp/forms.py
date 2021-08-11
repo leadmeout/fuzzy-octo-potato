@@ -1,23 +1,27 @@
 from django.forms import ModelForm
-from .models import TariffCalc
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
+from .models import TariffCalc
 
 
 class TariffCalcForm(ModelForm):
     """A class used to represent the Tariff Calculator form.
 
-    A bit longer description.
+    Inherits from ModelForm and uses models.TariffCalc.
 
-    Args:
-        variable (type): description
+    Attributes:
+        CLASSIFICATION_DICT: dict
+            contains key:value pairs where the key is a country code and the
+            value is the classification
 
-    Returns:
-        type: description
+        INTERNAL_TAX_DICT: dict
+            contains key:value pairs where the key is a country code and the
+            value is the tax rate for that code. Used in calculations in
+            get_tax_rate() and get_gross()
 
-    Raises:
-        Exception: description
-
+        TAX_DICT: dict
+            contains key:value pairs where the key is a float and the value is
+            a string to be displayed on the page for the user
     """
 
     class Meta:
@@ -26,6 +30,16 @@ class TariffCalcForm(ModelForm):
         localized_fields = "__all__"
 
     def __init__(self, *args, **kwargs):
+        """
+        A short description.
+
+        A bit longer description.
+
+        Parameters:
+            helper: FormHelper object
+                Creates an instance of FormHelper for use of crispy forms module
+
+        """
         super().__init__(*args, **kwargs)
 
         self.helper = FormHelper()
@@ -47,6 +61,9 @@ class TariffCalcForm(ModelForm):
     def get_tax_rate(self):
         """
         Returns the tax rate to be displayed on the results page
+
+        If no tax rate is found in POST, returns a blank line to be displayed
+        on the page instead.
         """
 
         try:
@@ -72,6 +89,9 @@ class TariffCalcForm(ModelForm):
     def get_gross(self):
         """
         Returns the gross total to be displayed on the results page.
+
+        If no gross is found in POST, returns a blank line to be displayed
+        on the page instead.
         """
 
         try:
@@ -97,6 +117,9 @@ class TariffCalcForm(ModelForm):
     def get_classification(self):
         """
         Returns classification to be displayed on results page.
+
+        If no classification is found in POST, returns a blank line to be
+        displayed on the page instead.
         """
         try:
             receiver = self.cleaned_data["customer"]

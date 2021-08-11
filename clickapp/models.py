@@ -6,7 +6,6 @@ class TariffCalc(models.Model):
     """A class used to represent the Tariff Calculator.
 
     Attributes:
-
         WAREHOUSE_LIST: list
             contains a list of tuples containing available warehouses
 

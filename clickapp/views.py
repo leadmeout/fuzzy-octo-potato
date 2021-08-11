@@ -11,8 +11,11 @@ def index(request):
     If the request is POST, iterate through each form in the post and return
     it on the same page. Otherwise, load the blank formset with 10 rows.
 
-    TCFormset (FormSet): Returns a FormSet object for the TariffCalc model.
-    Uses the TariffCalcForm as a starting point.
+    Parameters:
+
+        TCFormset (FormSet):
+        Returns a FormSet object for the TariffCalc model.
+        Uses the TariffCalcForm as a starting point.
     """
 
     if request.method == "POST":
