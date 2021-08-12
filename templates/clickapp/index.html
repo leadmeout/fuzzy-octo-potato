@@ -5,55 +5,48 @@
 {% block content %}
 
 <div class="row">
-  <table style="margin: auto">
-    <td>Lager</td>
-    <td>Kunde</td>
-    <td>Netto (€)</td>
-    <td>Steuersatz</td>
-    <td>Brutto (€)</td>
-    <td>Markierung</td>
+    <table style="margin: auto">
+        <td>Lager</td>
+        <td>Kunde</td>
+        <td>Netto (€)</td>
+        <td>Steuersatz</td>
+        <td>Brutto (€)</td>
+        <td>Markierung</td>
 
-    <form id="calc-form" action="{% url 'index' %}" method="post">
-      {% csrf_token %}
+        <form id="calc-form" action="{% url 'index' %}" method="post">
+            {% csrf_token %} {{ formset.management_form }} {% for form in formset %}
+            <tr>
 
-      {{ formset.management_form }}
-      {% for form in formset %}
-      <tr>
+                <td>{{ form.warehouse|as_crispy_field }}</td>
+                <td>{{ form.customer|as_crispy_field }}</td>
+                <td>{{ form.net|as_crispy_field }}</td>
+                <td>{{ form.get_tax_rate }}</td>
+                <td>{{ form.get_gross|intdot }}</td>
+                <td>{{ form.get_classification }}</td>
 
-          <td>{{ form.warehouse|as_crispy_field }}</td>
-          <td>{{ form.customer|as_crispy_field }}</td>
-          <td>{{ form.net|as_crispy_field }}</td>
-          <td>{{ form.get_tax_rate }}</td>
-          <td>{{ form.get_gross|intdot }}</td>
-          <td>{{ form.get_classification }}</td>
-
-      {% endfor %}
-    </form>
-  </tr>
-  </table>
+                {% endfor %}
+        </form>
+        </tr>
+    </table>
 
 </div>
 
 <div class="row" style="padding-top:20px">
-  <div class="p-0">
-    <input type="submit" form="calc-form" value="BERECHNEN">
-  </div>
+    <div class="p-0">
+        <input type="submit" form="calc-form" value="BERECHNEN">
+    </div>
 
-  <div class="row" id="legend-text" style="padding-top:30px">
-    <u>Anweisung</u>
-    <ol style="padding-top: 10px">
-      <li>Lager und Kunde auswählen</li>
-      <li>Netto Betrag eingeben (Format: 1.000,00)</li>
-      <li>Auf "BERECHNEN" drücken</li>
+    <div class="row" id="legend-text" style="padding-top:30px">
+        <u>Anweisung</u>
+        <ol style="padding-top: 10px">
+            <li>Lager und Kunde auswählen</li>
+            <li>Netto Betrag eingeben (Format: 1.000,00)</li>
+            <li>Auf "BERECHNEN" drücken</li>
 
-    </ol>
-    Steuersatz, Brutto und Markierung werden dementsprechend automatisch berechnet und angezeigt
-  </div>
+        </ol>
+        Steuersatz, Brutto und Markierung werden dementsprechend automatisch berechnet und angezeigt
+    </div>
 
 </div>
-
-
-
-
 
 {% endblock content %}

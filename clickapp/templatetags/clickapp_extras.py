@@ -21,7 +21,7 @@ def intdot(value):
     except ValueError:
         return "------"
 
-    val_new = "{:,d}".format(val_new)
+    val_new = f"{val_new:,d}"
     val_new = val_new.replace(",", ".")
     val_decimal = val_decimal.replace(".", ",")
     val_new += val_decimal
